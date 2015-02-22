@@ -1,0 +1,31 @@
+
+{% for task in tasks %}
+	<li class="list-group-item">
+            {% if task.is_completed %}
+		<del>{{ task.title }}</del>
+            {% else %}
+            {{ task.title }}
+            {% endif %}
+           
+		<button type="button" 
+            class="close pull-right" 
+            aria-hidden="true" 
+            class="" 
+            data-request="{{ __SELF__ }}::onDeleteItem"
+            data-request-data="title : '{{task.title}}'"
+            data-request-confirm="Are you sure?"
+            data-request-update="'{{ __SELF__ }}::tasks': '#result'">&times;</button>
+            <span class="close pull-right">&nbsp;&nbsp;</span>
+            <button type="button" 
+            aria-hidden="true" 
+            {% if task.is_completed %}
+            class="close pull-right icon-ban-circle"
+            {% else %}
+            class="close pull-right icon-ok-circle"
+            {% endif %}
+            data-request="{{ __SELF__ }}::onCompleteItem"
+            data-request-data="title : '{{task.title}}'"
+            data-request-update="'{{ __SELF__ }}::tasks': '#result'"
+            ></button>
+	</li>
+{% endfor %}

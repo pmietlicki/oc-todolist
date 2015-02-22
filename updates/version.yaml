@@ -1,0 +1,8 @@
+1.0.1: First version of Todo
+1.0.2:
+    - Create the Todo Tasks Table
+    - create_tasks_table.php
+1.0.3:
+    - Added login check
+1.0.4:
+    - Added "is_completed" functionnality
